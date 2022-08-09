@@ -7,12 +7,14 @@ import pytest
 from common.readExcel import ReadData
 from common.configHttp import configHttp
 import os
+import allure
 
 
 re = ReadData()
+testdata = re.read_excel()
 
 class TestCase1():
-    @pytest.mark.parametrize('dic', re)
+    @pytest.mark.parametrize('dic', testdata)
     def test_run(self, dic):
         print("=========>", dic)
         # 数据  id, interfaceUrl, name, method, value, expect
@@ -23,10 +25,10 @@ class TestCase1():
         value = dic["value"]
         expect = dic["expect"]
         # 实例化
-        ch = ConfigHttp(interfaceUrl, method, value)
+        ch = configHttp(interfaceUrl, method, value)
         re = ch.run()
         real = re.json()['errorCode']
         # 断言
         assert real == int(expect)
 if __name__ == '__main__':
-    pytest.main()
+    pytest.main(['-v','--alluredir=D:\\frameWork_vip17\\testReport\\allure'])
