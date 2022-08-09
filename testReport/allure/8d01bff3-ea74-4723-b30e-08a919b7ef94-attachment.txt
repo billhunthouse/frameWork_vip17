@@ -1,0 +1,1 @@
+=========> {'id': '3', 'interfaceUrl': 'https://www.wanandroid.com/user/logout/json', 'name': 'logout', 'method': 'get', 'value': "{'username':'liangchao'}", 'expect': '0'}
