@@ -1,6 +1,9 @@
 import logging
 # 获取文件名称
+from logging.handlers import RotatingFileHandler
+import timeStamp
 
+outputTime = timeStamp.timestamp()
 def log():
     logger = logging.getLogger('API')
     logger.setLevel(logging.DEBUG)
@@ -12,7 +15,8 @@ def log():
 
     # 设置文件输出到file
     file_path = '../TestReport'
-    file = logging.FileHandler(filename='API.log')
+    # file = logging.FileHandler(filename='API.log')
+    file = RotatingFileHandler(filename=f'{outputTime}.log',maxBytes=1*1024*10,backupCount=3,encoding='utf-8')
     file.setLevel(logging.DEBUG)
 
     # 设置输出的格式化样式
