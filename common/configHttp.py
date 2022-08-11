@@ -14,6 +14,7 @@ class configHttp():
         self.method = method
         self.value = value
 
+
     def __get(self):
         try:
             re = requests.get(url=self.interfaceUrl,params=eval(self.value))

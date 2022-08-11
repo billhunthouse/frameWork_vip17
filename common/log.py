@@ -1,7 +1,7 @@
 import logging
 # 获取文件名称
 from logging.handlers import RotatingFileHandler
-from common.timeStamp import timestamp
+from common.commonMethod import timestamp
 
 
 def log():

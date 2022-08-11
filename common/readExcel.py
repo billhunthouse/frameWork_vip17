@@ -5,6 +5,8 @@
 
 import xlrd,xlwt
 import os
+from common.log import log
+logger = log()
 
 class ReadData():
     def __init__(self):
@@ -27,17 +29,20 @@ class ReadData():
 
     def read_excel(self):
         data = []
+        # 以最大的列数为循环,从第1列开始遍历
         for i in range(1,self.rownum):
+            # 第0行的数据是title, 以title为列
             keylist = self.sh.row_values(0)
-            # print(f"keylist的值是{keylist}")
+            # 从第一行开始读取数据,逐行读取行的值
             valueList = self.sh.row_values(i)
             # print(f"valuelist{valueList}")
 
+            # 列表推导式,生成test Data
             dict1 = {keylist[j]:valueList[j] for j in range(len(keylist))}
             data.append(dict1)
 
         return data
 
 if __name__ == '__main__':
-    # test = ReadData()
-    pass
+    test = ReadData()
+    logger.info(test.read_excel())

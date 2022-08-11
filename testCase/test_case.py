@@ -9,8 +9,8 @@ from common.readExcel import ReadData
 from common.configHttp import configHttp
 import os
 import allure
-from common.timeStamp import timestamp
-from common.timeStamp import pathFunc
+from common.commonMethod import timestamp
+from common.commonMethod import pathFunc
 
 
 re = ReadData()
