@@ -8,6 +8,6 @@ def timestamp():
     currentTime = now.strftime("%Y_%m_%d %H_%M_%S")
     # print(currentTime)
     return currentTime
-print(timestamp())
-
+if __name__ == '__main__':
+    pass
 
