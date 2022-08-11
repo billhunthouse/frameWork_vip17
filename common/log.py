@@ -1,9 +1,9 @@
 import logging
 # 获取文件名称
 from logging.handlers import RotatingFileHandler
-import timeStamp
+from common.timeStamp import timestamp
 
-outputTime = timeStamp.timestamp()
+
 def log():
     logger = logging.getLogger('API')
     logger.setLevel(logging.DEBUG)
@@ -16,7 +16,8 @@ def log():
     # 设置文件输出到file
     file_path = '../TestReport'
     # file = logging.FileHandler(filename='API.log')
-    file = RotatingFileHandler(filename=f'{outputTime}.log',maxBytes=1*1024*10,backupCount=3,encoding='utf-8')
+    # 设置拆分log大小的方法
+    file = RotatingFileHandler(filename=f'../TestReport\logRecord\{timestamp()}.log',maxBytes=1*1024*10,backupCount=3,encoding='utf-8')
     file.setLevel(logging.DEBUG)
 
     # 设置输出的格式化样式
@@ -30,5 +31,7 @@ def log():
     return logger
 
 if __name__ == '__main__':
-    logger = log()
-    logger.info('继续仍要删除')
+    # logger = log()
+    pass
+
+

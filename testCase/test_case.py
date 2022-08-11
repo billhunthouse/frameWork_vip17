@@ -9,7 +9,7 @@ from common.configHttp import configHttp
 import os
 import allure
 from common.timeStamp import timestamp
-
+from common.timeStamp import pathFunc
 
 
 re = ReadData()
@@ -34,12 +34,14 @@ class TestCase1():
         assert real == int(expect)
 if __name__ == '__main__':
     # 生成allure 报告,定义报告路径
-    JsonFilePath = './testReport/AllureJsonResutlt'
-    HtmlFilePath = './testReport/AllureHtmlResult'
+
+    JsonFilePath = pathFunc()+r'\testReport\AllureJsonResult'
+    HtmlFilePath = pathFunc()+r'\testReport\AllureHtmlReport'
+    print(JsonFilePath)
     t1 = timestamp()
     # 以日期为格式生成json报告路径
-    pytest.main(['-v',f'--alluredir={JsonFilePath}//{t1}'])
+    pytest.main(['-v',f'--alluredir={JsonFilePath}'])
     print("生成json格式完成")
     # 生成html 报告路径
-    os.system(f'allure generate -c -o {JsonFilePath}//{t1} {HtmlFilePath}//{t1} ')
+    os.system(f'allure generate -c -o {JsonFilePath} {HtmlFilePath}//{t1} ')
     print("生成html完成")
