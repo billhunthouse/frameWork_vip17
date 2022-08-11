@@ -35,13 +35,11 @@ class TestCase1():
         assert real == int(expect)
 if __name__ == '__main__':
     # 生成allure 报告,定义报告路径
-
     JsonFilePath = pathFunc()+r'\testReport\AllureJsonResult'
     HtmlFilePath = pathFunc()+r'\testReport\AllureHtmlReport'
+
     t1 = timestamp()
     # 以日期为格式生成json报告路径
     pytest.main(['-v',f'--alluredir={JsonFilePath}\\{t1}'])
-    print(f'allure路径是{JsonFilePath}\\{t1}')
-    time.sleep(2)
     # 生成html 报告路径    -c 参数为输出文件位置，  -o 参数为 json 路径位置
     os.system(f'allure generate -c -o {HtmlFilePath}\\{t1} {JsonFilePath}\\{t1}  ')
