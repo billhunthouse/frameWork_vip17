@@ -31,13 +31,13 @@ class ReadData():
         data = []
         # 以最大的列数为循环,从第1列开始遍历
         for i in range(1,self.rownum):
-            # 第0行的数据是title, 以title为列
+            # 第0行的数据是title, 以title为列,以第0行标题为keylist   k值
             keylist = self.sh.row_values(0)
             # 从第一行开始读取数据,逐行读取行的值
             valueList = self.sh.row_values(i)
-            # print(f"valuelist{valueList}")
-
-            # 列表推导式,生成test Data
+            # 列表推导式,生成test Data 以k值对应每个value,value是每一行与之对应的数据
+            # keylist = title 的长度, 比如是9
+            # keylist[0]:value[0] = 
             dict1 = {keylist[j]:valueList[j] for j in range(len(keylist))}
             data.append(dict1)
 
